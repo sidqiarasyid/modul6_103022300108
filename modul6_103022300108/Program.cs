@@ -7,7 +7,7 @@ class Run {
         SayaTubeVideo vid1 = new SayaTubeVideo("Review Film Narnia oleh Sidqi");
         SayaTubeVideo vid2 = new SayaTubeVideo("Review Film Interstellar oleh Sidqi");
         SayaTubeVideo vid3 = new SayaTubeVideo("Review Film John Wick oleh Sidqi");
-        SayaTubeVideo vid4 = new SayaTubeVideo("Review Film John Wick 2 oleh Sidqi");
+        SayaTubeVideo vid4 = new SayaTubeVideo(null);
         SayaTubeVideo vid5 = new SayaTubeVideo("Review Film John Wick 3 oleh Sidqi");
         SayaTubeVideo vid6 = new SayaTubeVideo("Review Film John Wick 4 oleh Sidqi");
         SayaTubeVideo vid7 = new SayaTubeVideo("Review Film BCS oleh Sidqi");
@@ -27,6 +27,14 @@ class Run {
         user.AddVideo(vid8);
         user.AddVideo(vid9);
         user.AddVideo(vid10);
+
+        vid1.IncreasePlayCount(100);
+
+        
+        for (int i = 0; i < 10; i++)
+        {
+            vid3.IncreasePlayCount(1000000);
+        }
 
         user.PrintAllVideoPlayCount();
 

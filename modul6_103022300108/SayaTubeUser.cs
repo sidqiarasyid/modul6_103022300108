@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace modul6_103022300108
 
         public SayaTubeUser(string username)
         {
+            Contract.Requires(username.Length <= 200 && username != null);
+            Debug.Assert(username.Length <= 100 && username != null, "Username tidak boleh melebihi 100 karakter atau null");
             this.username = username;
             uploadedVideos = new List<SayaTubeVideo>();  
         }
@@ -27,6 +31,8 @@ namespace modul6_103022300108
         }
 
         public void AddVideo(SayaTubeVideo vid) {
+            Contract.Requires(vid.GetPlayCount() > 250000000 && vid != null);
+            Debug.Assert(vid.GetPlayCount() < 250000000 && vid != null, "Username tidak boleh melebihi 100 karakter atau null");
             uploadedVideos.Add(vid);
         }
 
@@ -34,8 +40,9 @@ namespace modul6_103022300108
             Console.WriteLine("User: " + username);
             for (int i = 0; i < uploadedVideos.Count; i++)
             {
-                Console.WriteLine("Video " + i+1 + " judul: " + uploadedVideos[i].GetTitle());
+                Console.WriteLine("Video " + i+1 + " judul: " + uploadedVideos[i].GetTitle() + " Views: " + uploadedVideos[i].GetPlayCount());
             }
+            Contract.Ensures(uploadedVideos.Count <= 8);
         }
     }
 }
